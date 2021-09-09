@@ -7,12 +7,12 @@ arr.sort();
 for (let index = 0; index < arr.length; index++) {
     if (arr[index] == arr[index+1]) {
         c1++;
+        if(c1 > c2){
+            common = arr[index];
+            c2 = c1;
+        }
     }else{
         c1 = 1;
-    }
-    if(c1 > c2){
-        common = arr[index];
-        c2 = c1;
     }
 }
 console.log(`The most common thing in the array is "${common}" and it is represented ${c2} times in the array`);
