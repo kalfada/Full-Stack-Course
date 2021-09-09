@@ -52,7 +52,16 @@ function indexLesson() {
     }
     alert(`the letter exsit ${cnt} times`)
 }
-indexLesson();
+//indexLesson();
+function sortFunc(){
+    let arr = [3,15,64,2,785,34,7,4,3,214,2,1,23,13,23,458,79,0,897,6];
+    arr.sort(function (a,b){return a - b});
+    console.log(arr);
+    arr.reverse();
+    console.log(arr);
+}
+sortFunc();
+
 
 
 

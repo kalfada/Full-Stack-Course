@@ -6,7 +6,7 @@ function person(fName, lName, ID, City, birthDate, parentID) {
     this.birthDate = birthDate;
     this.parentID = parentID;
 }
-let pers = new person('Daniel', 'Kalfa' , '318448032', 'Jerusalem', '07/06/1997', '318');
-let persons1 = JSON.parse(data);
-console.log(persons1);
-console.log(pers);
+
+//let pers = new person('Daniel', 'Kalfa' , '318448032', 'Jerusalem', '07/06/1997', '318');
+let json = require('./data.json');
+console.log(json);
