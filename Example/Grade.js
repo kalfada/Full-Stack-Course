@@ -2,20 +2,26 @@ let grade = 0, total = 0, students = 0, highest = 0, lowest = 100;
 
 grade = prompt('Please enter the student grade: ');
 while (grade != 'exit') {
-if (grade >= 0 && grade <= 100 && !isNaN(grade) && grade != '') {
+    if (grade >= 0 && grade <= 100 && !isNaN(grade) && grade != '') {
+        grade = Number(grade);
         if (grade > highest) {
-            highest = Number(grade);
-        } else if (grade < lowest) {
-            lowest = Number(grade);
+            highest = grade;
         }
-        total += Number(grade);
+        if (grade < lowest) {
+            lowest = grade;
+        }
+        total += grade;
         students++;
-    }else{
+    } else {
         alert('enter a valid number');
     }
     grade = prompt('Please enter the student grade: ');
 }
-alert(`They are ${students} students in the class
-The avrage grade is ${(total / students).toFixed(2)}
-The higest grade is ${highest}
-The lowest grade is ${lowest}`);
+if (!students) {
+    alert(`they are ${students} students in the class
+    the avrage grade is ${total / students}
+    the higest grade is ${highest}
+    the lowest grade is ${lowest}`);
+} else {
+    alert("Don't have any Values");
+}
