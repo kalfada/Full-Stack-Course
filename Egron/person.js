@@ -18,6 +18,14 @@ function searchByCity(city) {
         }
     });
 }
+//Search in all persons by ID.
+function searchByID(ID) {
+    json.forEach(element => {
+        if (element.ID.toLowerCase() == ID.toLowerCase()) {
+            toString(element);
+        }
+    });
+}
 //Search in all persons by first name and last name
 //if includes the search string or part of it, prints it out.
 function searchByName(name) {
@@ -35,4 +43,4 @@ function toString(person) {
     Birth Date: ${person.birthDate}
     Parent ID: ${person.parentID}`);
 }
-searchByName('Da');
+searchByID('318448032');
