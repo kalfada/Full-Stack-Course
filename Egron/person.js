@@ -66,10 +66,14 @@ function searchByAge(age) {
 function searchBySomething() {
     json.forEach(element => {
         let userBirthDate = new Date(correctDateFormat(element.birthDate));
-        if ((userBirthDate.getMonth()+1) % 2 == 0 || howManyChilds(element.ID) >= 2) {
+        if ((userBirthDate.getMonth()+1) % 2 == 0 || howManyChilds(element.ID) >= 2 || element.fName.split("").reverse().join("") == element.fName) {
             toString(element);
         }
     });
+}
+//search for palindrom in person first and last name or in his child's name.
+function searchForPalindroms(ID) {
+    
 }
 //return how many childs does person have.
 function howManyChilds(ID) {
@@ -96,3 +100,5 @@ function toString(person) {
     Parent ID: ${person.parentID}`);
 }
 searchBySomething();
+let name = 'daniel';
+console.log(name.split("").reverse().join(""));
