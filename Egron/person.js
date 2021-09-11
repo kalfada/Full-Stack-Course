@@ -26,6 +26,14 @@ function searchByID(ID) {
         }
     });
 }
+//Search in all persons the chidren of one person by the ID of the parent
+function searchByParentID(parentID) {
+    json.forEach(element => {
+        if (element.parentID == parentID) {
+            toString(element);
+        }
+    });
+}
 //Search in all persons by first name and last name
 //if includes the search string or part of it, prints it out.
 function searchByName(name) {
@@ -43,4 +51,4 @@ function toString(person) {
     Birth Date: ${person.birthDate}
     Parent ID: ${person.parentID}`);
 }
-searchByID('318448032');
+searchByParentID(undefined);
