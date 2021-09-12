@@ -14,8 +14,7 @@ function person(fName, lName, ID, City, birthDate, parentID) {
     this.parentID = parentID;
 }
 
-let json = require('./data.json');
-json = json.persons;
+let json = require('./data.json').persons;
 
 //Search in all persons by city.
 function searchByCity(city) {
@@ -30,8 +29,10 @@ function searchByID(ID) {
     json.forEach(element => {
         if (element.ID.toLowerCase() == ID.toLowerCase()) {
             toString(element);
+            return element;
         }
     });
+    return undefined;
 }
 //Search in all persons the chidren of one person by the ID of the parent
 function searchByParentID(parentID) {
@@ -66,14 +67,32 @@ function searchByAge(age) {
 function searchBySomething() {
     json.forEach(element => {
         let userBirthDate = new Date(correctDateFormat(element.birthDate));
-        if ((userBirthDate.getMonth()+1) % 2 == 0 || howManyChilds(element.ID) >= 2 || element.fName.split("").reverse().join("") == element.fName) {
+        if ((searchForPalindroms(element.ID) ||userBirthDate.getMonth() + 1) % 2 == 0 || howManyChilds(element.ID) >= 2) {
+            console.log('h');
             toString(element);
         }
     });
 }
 //search for palindrom in person first and last name or in his child's name.
 function searchForPalindroms(ID) {
-    
+    if (searchByID(ID).fName.checkPalindrom() || searchByID(ID).lName.checkPalindrom()) {
+        return true;
+    } else {
+        json.forEach(element => {
+            if (element.parentID == ID && (element.fName.checkPalindrom() || element.lName.checkPalindrom())) {
+                return true;
+            }
+        });
+    }
+    return false;
+}
+//Check if string is a palindrom, if so, return true, otherwise return false
+function checkPalindrom(str) {
+    return str.reverseString() == str;
+}
+//reverse a string and return it
+function reverseString(str) {
+    return str.toLowerCase().split("").reverse().join("");
 }
 //return how many childs does person have.
 function howManyChilds(ID) {
@@ -89,7 +108,7 @@ function howManyChilds(ID) {
 //(couse js stupid)
 function correctDateFormat(date) {
     let dateParts = date.split("/");
-    return `${dateParts[1]}/${++dateParts[0]}/${dateParts[2]}`; 
+    return `${dateParts[1]}/${++dateParts[0]}/${dateParts[2]}`;
 }
 //Print the person.
 function toString(person) {
@@ -100,5 +119,3 @@ function toString(person) {
     Parent ID: ${person.parentID}`);
 }
 searchBySomething();
-let name = 'daniel';
-console.log(name.split("").reverse().join(""));
