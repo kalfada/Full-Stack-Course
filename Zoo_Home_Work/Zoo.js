@@ -71,7 +71,7 @@ function addAnimal() {
         if (searchAnimalByCode(code) == notExist) {
             animalArr.push(name + code);
         } else {
-            alert('animal alredy exist');
+            alert('code alredy exist');
         }
     } else {
         alert('animal alredy exist');
