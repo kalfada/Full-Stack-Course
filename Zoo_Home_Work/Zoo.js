@@ -112,27 +112,3 @@ function toString(animal) {
 function formatAnimalName(animal) {
     return animal.charAt(0).toUpperCase() + animal.slice(1).toLowerCase();
 }
-
-/*switch (choose) {
-    case 1: printAnimalName(SearchAnimal(prompt('Enter animal code:')));
-    console.log('hey');
-        break;
-    case 2:
-        printAnimalCode(SearchAnimal(prompt('Enter animal code:')));
-        break;
-    case 3:
-        addAnimal(prompt('enter animal name and animal code'));
-        break;
-    case 4:
-        deleteAnimal(prompt('enter code for the animal you want to delete'));
-        break;
-    case 5:
-        printAnimals();
-        break;
-    case 6:
-
-        break;
-    default:
-        //alert(`Please choose one of the options above!`);
-        break;
-}*/
