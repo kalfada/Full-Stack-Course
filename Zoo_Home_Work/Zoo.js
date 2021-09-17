@@ -21,7 +21,7 @@ while (choose != 6) {
     switch (choose) {
         case '1': printAnimalName(searchAnimalByCode(prompt('Enter animal code:')));
             break;
-        case '2': printAnimalCode(searchAnimalByName(prompt('Enter animal code:')));
+        case '2': printAnimalCode(searchAnimalByName(prompt('Enter animal name:')));
             break;
         case '3': addAnimal();
             break;
