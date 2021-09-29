@@ -26,14 +26,10 @@ function searchByCity(city) {
 }
 //Search in all persons by ID.
 function searchByID(ID) {
-    json.forEach(element => {
-        if (element.ID.toLowerCase() == ID.toLowerCase()) {
-            toString(element);
-            return element;
-        }
-    });
-    return undefined;
+    return json.find(element => element.ID == ID);
+    
 }
+console.log(searchByID('318448032'));
 //Search in all persons the chidren of one person by the ID of the parent
 function searchByParentID(parentID) {
     json.forEach(element => {
@@ -67,28 +63,27 @@ function searchByAge(age) {
 function searchBySomething() {
     json.forEach(element => {
         let userBirthDate = new Date(correctDateFormat(element.birthDate));
-        if ((searchForPalindroms(element.ID) ||userBirthDate.getMonth() + 1) % 2 == 0 || howManyChilds(element.ID) >= 2) {
-            console.log('h');
+        if (searchForPalindroms(element.ID) || (userBirthDate.getMonth() + 1) % 2 == 0 || howManyChilds(element.ID) >= 2) {
             toString(element);
         }
     });
 }
 //search for palindrom in person first and last name or in his child's name.
 function searchForPalindroms(ID) {
-    if (searchByID(ID).fName.checkPalindrom() || searchByID(ID).lName.checkPalindrom()) {
+    if (checkPalindrom(searchByID(ID).fName) || checkPalindrom(searchByID(ID).lName)) {
         return true;
     } else {
-        json.forEach(element => {
-            if (element.parentID == ID && (element.fName.checkPalindrom() || element.lName.checkPalindrom())) {
+        for (let index = 0; index < json.length; index++) {
+            if (json[index].parentID == ID && (json[index].fName.checkPalindrom() || json[index].lName.checkPalindrom())) {
                 return true;
             }
-        });
+        }
     }
     return false;
 }
 //Check if string is a palindrom, if so, return true, otherwise return false
 function checkPalindrom(str) {
-    return str.reverseString() == str;
+    return reverseString(str).toLowerCase() == str.toLowerCase();
 }
 //reverse a string and return it
 function reverseString(str) {
@@ -118,4 +113,24 @@ function toString(person) {
     Birth Date: ${person.birthDate}
     Parent ID: ${person.parentID}`);
 }
-searchBySomething();
+//searchBySomething();
+
+
+
+
+function addPerson(params) {
+    
+}
+
+function deletePerson(params) {
+    
+}
+
+/////////////////////////////////////////////////////////////////////
+//Validation functions
+
+function validName(str) {
+    if (condition) {
+
+    }
+}
