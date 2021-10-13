@@ -12,6 +12,12 @@ function Person(fName, lName, ID, City, birthDate, parentID) {
     this.city = city;
     this.birthDate = birthDate;
     this.parentID = parentID;
+
+    //Add person to the Json file
+    this.addPerson = function (fName, lName, ID, City, birthDate, parentID) {
+        let newPerson = new Person(fName, lName, ID, City, birthDate, parentID);
+        return newPerson;
+    }
 }
 
 let json = require('./data.json').persons;
@@ -27,7 +33,7 @@ function searchByCity(city) {
 //Search in all persons by ID.
 function searchByID(ID) {
     return json.find(element => element.ID == ID);
-    
+
 }
 console.log(searchByID('318448032'));
 //Search in all persons the chidren of one person by the ID of the parent
@@ -124,7 +130,7 @@ function addPerson(fName, lName, ID, City, birthDate, parentID) {
 }
 
 function deletePerson(params) {
-    
+
 }
 
 /////////////////////////////////////////////////////////////////////

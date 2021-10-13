@@ -116,9 +116,9 @@ let country = {
     }
 }
 let arr = [];
-arr.push(animal, country);
-//console.log(arr);
 let daniel = new Person('daniel', 24, '318448032');
 let yosef = new Person('Yosef', 24, '31833533')
+arr.push(daniel, animal, country);
+//console.log(arr);
 daniel.print()
 yosef.print()
