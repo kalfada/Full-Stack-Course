@@ -5,7 +5,7 @@
 //      5.how to write the Person() object properly and how to require some fields to be a must.
 
 //Object of person
-function person(fName, lName, ID, City, birthDate, parentID) {
+function Person(fName, lName, ID, City, birthDate, parentID) {
     this.fName = fName;
     this.lName = lName;
     this.ID = ID;
@@ -118,8 +118,9 @@ function toString(person) {
 
 
 
-function addPerson(params) {
-    
+function addPerson(fName, lName, ID, City, birthDate, parentID) {
+    let newPerson = new Person(fName, lName, ID, City, birthDate, parentID);
+    return newPerson;
 }
 
 function deletePerson(params) {
