@@ -88,8 +88,6 @@ switch (choise) {
         alert(calc.div(Number(num1), Number(num2)));
         break;
 }
-*/
-
 function Person (name, age, ID) {
     this.name = name,
     this.age = age,
@@ -122,3 +120,35 @@ arr.push(daniel, animal, country);
 //console.log(arr);
 daniel.print()
 yosef.print()
+
+function Student(name, units, grades = []) {
+this.name = name;
+    this.units = units;
+    this.grades = grades;
+    this.getAverage = () => {
+        let total = 0;
+        for (const grade of this.grades) {
+            total += grade;
+        }
+        return total / this.grades.length;
+    }
+}
+
+let students = [
+    new Student('Daniel', 1, [100, 100, 100, 100]),
+    new Student('Yonatan', 1, [90, 65, 87, 100]),
+    new Student('Michael', 1, [90, 10, 70, 40]),
+    new Student('Avraham', 1, [100, 90, 40, 86]),
+];
+
+function getAverage() {
+    let total = 0;
+
+    for (const grades of students) {
+        total += grades.getAverage();
+    }
+    return total / students.length;
+}
+
+console.log(getAverage());
+*/
