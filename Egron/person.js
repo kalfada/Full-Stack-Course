@@ -23,7 +23,7 @@ function Person(fName, lName, ID, city, birthDate, parentID) {
 let json = require('./data.json').persons;
 let egr = [];
 for (const key in json) {
-     egr.push(new Person(json[key]));
+    egr.push(new Person(json[key]));
 }
 
 

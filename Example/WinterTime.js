@@ -176,10 +176,7 @@ function getAverage() {
     }
     return total / students.length;
 }
-*/
-
-
-let students = ['daniel', 'avi', 'aviad', 'yerachmiel', 'yosef', 'mike', 'steve', 'ruben'];
+let students = ['daniel', 'michael', 'tishbi', 'chanoch', 'moshe', 'avi', 'aviad', 'yerachmiel', 'yosef', 'mike', 'steve', 'ruben'];
 
 let short = students.filter((val) => {
     return val.length <= 5;
@@ -189,3 +186,5 @@ let includeI = students.filter((val) => {
     return val.toLowerCase().includes('i') && val[val.length-1].toLowerCase() != 'i';
 });
 console.log(includeI);
+*/
+
