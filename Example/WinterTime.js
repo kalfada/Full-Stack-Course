@@ -120,6 +120,7 @@ arr.push(daniel, animal, country);
 //console.log(arr);
 daniel.print()
 yosef.print()
+*/
 
 function Student(name, units, grades = []) {
 this.name = name;
@@ -141,6 +142,26 @@ let students = [
     new Student('Avraham', 1, [100, 90, 40, 86]),
 ];
 
+let choise = prompt(`Welcome to the grades Data base:
+[1] Add studennt\
+[2] Search for student
+[3] Print average grades of all class
+[4] Exit`);
+
+while (choise != 4) {
+    switch (choise) {
+        case '1':
+            addStudent();            
+            break;
+        case '2':
+            searchStudent();
+            break;
+        case '3':
+            getAverage();
+            break;
+    }
+}
+
 function getAverage() {
     let total = 0;
 
@@ -151,4 +172,3 @@ function getAverage() {
 }
 
 console.log(getAverage());
-*/
