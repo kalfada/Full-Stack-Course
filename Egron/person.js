@@ -5,7 +5,7 @@
 //      5.how to write the Person() object properly and how to require some fields to be a must.
 
 //Object of person
-function Person(fName, lName, ID, City, birthDate, parentID) {
+function Person(fName, lName, ID, city, birthDate, parentID) {
     this.fName = fName;
     this.lName = lName;
     this.ID = ID;
@@ -21,7 +21,13 @@ function Person(fName, lName, ID, City, birthDate, parentID) {
 }
 
 let json = require('./data.json').persons;
+let egr = [];
+for (const key in json) {
+     egr.push(new Person(json[key]));
+}
 
+
+//console.log(json);
 //Search in all persons by city.
 function searchByCity(city) {
     json.forEach(element => {
@@ -35,7 +41,9 @@ function searchByID(ID) {
     return json.find(element => element.ID == ID);
 
 }
-console.log(searchByID('318448032'));
+
+//console.log(searchByID('318448032'));
+
 //Search in all persons the chidren of one person by the ID of the parent
 function searchByParentID(parentID) {
     json.forEach(element => {
