@@ -5,29 +5,17 @@
 //      5.how to write the Person() object properly and how to require some fields to be a must.
 
 //Object of person
-function Person(fName, lName, ID, city, birthDate, parentID) {
+function person(fName, lName, ID, City, birthDate, parentID) {
     this.fName = fName;
     this.lName = lName;
     this.ID = ID;
     this.city = city;
     this.birthDate = birthDate;
     this.parentID = parentID;
-
-    //Add person to the Json file
-    this.addPerson = function (fName, lName, ID, City, birthDate, parentID) {
-        let newPerson = new Person(fName, lName, ID, City, birthDate, parentID);
-        return newPerson;
-    }
 }
 
 let json = require('./data.json').persons;
-let egr = [];
-for (const key in json) {
-    egr.push(new Person(json[key]));
-}
 
-
-//console.log(json);
 //Search in all persons by city.
 function searchByCity(city) {
     json.forEach(element => {
@@ -39,11 +27,9 @@ function searchByCity(city) {
 //Search in all persons by ID.
 function searchByID(ID) {
     return json.find(element => element.ID == ID);
-
+    
 }
-
-//console.log(searchByID('318448032'));
-
+console.log(searchByID('38448032'));
 //Search in all persons the chidren of one person by the ID of the parent
 function searchByParentID(parentID) {
     json.forEach(element => {
@@ -132,13 +118,14 @@ function toString(person) {
 
 
 
-function addPerson(fName, lName, ID, City, birthDate, parentID) {
-    let newPerson = new Person(fName, lName, ID, City, birthDate, parentID);
-    return newPerson;
+function addPerson(fName, lName, ID, City, birthDay, ParentID) {
+    json += new person(fName, lName, ID, City, birthDay, ParentID)
+    let newJson = JSON.stringify(json);
+    
 }
 
 function deletePerson(params) {
-
+    
 }
 
 /////////////////////////////////////////////////////////////////////
