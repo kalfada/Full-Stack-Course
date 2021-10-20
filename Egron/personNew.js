@@ -77,6 +77,10 @@ function searchByID(ID) {
 return json.find(element => element.ID == ID);
 }
 
+function searchByName(name) {
+    return json.filter(element => element.lName == name);
+}
+
 function isNotValidWord(str) {
     return /([^A-Z])/gi.test(str);
 }
