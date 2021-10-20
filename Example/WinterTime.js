@@ -121,8 +121,9 @@ arr.push(daniel, animal, country);
 daniel.print()
 yosef.print()
 
+*/
 function Student(name, units, grades = []) {
-this.name = name;
+    this.name = name;
     this.units = units;
     this.grades = grades;
     this.getAverage = () => {
@@ -186,5 +187,3 @@ let includeI = students.filter((val) => {
     return val.toLowerCase().includes('i') && val[val.length-1].toLowerCase() != 'i';
 });
 console.log(includeI);
-*/
-
