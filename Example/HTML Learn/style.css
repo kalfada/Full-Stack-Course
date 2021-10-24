@@ -1,0 +1,12 @@
+body {
+    background-color: thistle;
+}
+
+h1 {
+    background-color: rgb(209, 227, 236);
+    color: rgb(241, 160, 93);
+    font-style: italic;
+    text-align: center;
+    align-content: center;
+    padding: 20px;
+}
