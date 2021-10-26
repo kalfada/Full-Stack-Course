@@ -11,34 +11,68 @@ h1 {
     padding: 20px;
 }*/
 
+header{
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
 body{
     margin: 0px 0px;
+    background-color: lightgray;
 }
 
 a{
     text-decoration: none;
+
+}
+
+a:link, a:visited{
+    color: black;
+
+}
+
+a:hover{
+    color: grey;
+}
+
+a:active{
+    color: cornflowerblue;
 }
 
 #logo{
-    display: inline;
-    width: 100px;
-    height: 50px;
-    
+    width: 200px;
 }
 
 #img{
+    object-fit: cover;
     width: 100vw;
-    height: 55vw;
+    height: 50vw;
+}
+
+#portrait{
+    object-fit: cover;
+    width: 260px;
+    height: 100%;
+    margin-top: 50px;
 }
 
 ul{
     display: inline;
-    margin-bottom: 200px;
+    margin: 0px;
+    padding: 0px;
 }
 
 li{
-    list-style-type: none;
+    font-family: sans-serif;
+    list-style: none;
     display: inline;
-    margin-left: 10px;
+    position: relative;
+    top: -40px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 
+}
+
+p{
+    font-family: fantasy;
 }
