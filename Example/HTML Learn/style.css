@@ -14,6 +14,10 @@ h1 {
 header{
     background-color: white;
     border-bottom: 2px solid black;
+    position: fixed;
+    top: 0px;
+    width: 100%;    
+    z-index: 1;
 }
 
 body{
@@ -56,6 +60,23 @@ a:active{
     margin-top: 50px;
 }
 
+#bg-image{
+    margin-top: 80px;
+    background-image: url(https://res.cloudinary.com/practicaldev/image/fetch/s--8caaw1hY--/c_imagga_scale,f_auto,fl_progressive,h_1080,q_auto,w_1080/https://dev-to-uploads.s3.amazonaws.com/i/k5dp029baand3ni510db.jpg);
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#bg-image h1{
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+
 ul{
     display: inline;
     margin: 0px;
@@ -74,5 +95,10 @@ li{
 }
 
 p{
-    font-family: fantasy;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+article{
+    padding: 20px 50px;
+    margin-bottom: 40px;
 }
