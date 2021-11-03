@@ -86,7 +86,7 @@ function addNewPerson() {
     egron.push(new person(fName, lName, ID, city, parentID));
 }
 
-deletePerson();
+//deletePerson();
 function deletePerson() {
     let pers = '318448032'//prompt('Enter the ID of the person you want to delete:');
 

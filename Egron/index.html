@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Egron</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Mono">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
+
 <body>
-    <h1>Welcome to my Egron</h1>
-    <br/>
+    <header>
+        <a href="index.html">
+            <h1>Egron</h1>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Show Egron</a></li>
+                <li><a href="addPerson.html">Add Person</a></li>
+                <li><a href="">Delete Person</a></li>
+            </ul>
+        </nav>
+    </header>
     <table>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>ID</th>
-            <th>City</th>
-            <th>Birth Date</th>
-            <th>Parent ID</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>City</th>
+                <th>Birth Date</th>
+                <th>Parent ID</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>Daniel</td>
+                <td>Kalfa</td>
+                <td>318448032</td>
+                <td>Jerusalem</td>
+                <td>07/06/1997</td>
+                <td>318448033</td>
+                <td><i class="fas fa-pen edit"></i></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>ID</td>
+                <td>City</td>
+                <td>Birth Date</td>
+                <td>Parent ID</td>
+                <td><i class="fas fa-pen edit"></i></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>ID</td>
+                <td>City</td>
+                <td>Birth Date</td>
+                <td>Parent ID</td>
+                <td><i class="fas fa-pen edit"></i></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>318448032</td>
+                <td>City</td>
+                <td>Birth Date</td>
+                <td>Parent ID</td>
+                <td><i class="fas fa-pen edit"></i></td>
+            </tr> -->
+        </tbody>
     </table>
-    <script type="text/javascript" src="functions.js"></script>
-    <script type="text/javascript" src="data.json"></script>
-    <script type="text/javascript" src="personNew.js"></script>
+
+    <script src="personNew.js"></script>
+    <script src="functions.js"></script>
 </body>
+
 </html>

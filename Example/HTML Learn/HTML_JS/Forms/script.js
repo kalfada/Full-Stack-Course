@@ -4,6 +4,6 @@
 
 document.querySelector('form').onsubmit = event => {
     event.preventDefault();
-    console.log(event.target.children.age.value);
+    console.log(event.target.children.fName.value);
 }
 
