@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+}
+
+#gallery{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.image{
+    height: 80px;
+    width: 80px;
+    background-size: cover;
+    border-radius: 10%;
+    
+}

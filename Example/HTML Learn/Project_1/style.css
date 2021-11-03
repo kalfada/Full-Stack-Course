@@ -2,12 +2,8 @@
     margin: auto;
     display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
-.container-item {
-    position: relative;
-}
 
 .text {
     text-align: center;
@@ -26,7 +22,6 @@ h1{
     padding: 8px;
     border: 2px solid #2196f3;
     border-radius: 50%;
-    text-align: center;
     transition: 0.2s;
 
 }
@@ -37,6 +32,7 @@ h1{
 }
 
 .container-item a {
+    text-align: center;
     text-decoration: none;
     color: #2196f3;
 }
@@ -45,5 +41,14 @@ h1{
     color: white;
     background-color: #2196f3;
     transition: 0.2s;
+
+}
+
+#cover-image{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwOfuTAJ6ImkRWMX0LcF3FADGBD7z0Fpj0j-mWebpfOCokFfnkua4lq5aE6KvhxL2DJ2U&usqp=CAU");
+}
+
+#profile-image{
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Albert_Einstein_Head.jpg/1536px-Albert_Einstein_Head.jpg");
 
 }
