@@ -3,7 +3,7 @@ body {
     margin: 0px;
 }
 
-header {
+header{
     color: white;
     text-align: center;
     background-color: black;
@@ -73,11 +73,32 @@ form {
 }
 
 input {
+    background-color: lightgray;
     text-align: center;
     border: 2px solid black;
     margin: 2px;
 }
 
+::placeholder{
+    color: black;
+    font-family: Poppins, sans-serif;
+}
+
+#search input{
+    display: block;
+    margin:20px auto;
+    padding: 4px;
+}
+
 .edit{
     cursor: pointer;
+}
+
+article{
+    margin: 100px 400px;
+}
+
+p{
+    text-align: center;
+    font-family: Poppins, sans-serif;
 }
