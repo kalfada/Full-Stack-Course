@@ -1,7 +1,7 @@
 const tbody = document.querySelector('tbody');
 let persons = [
   {
-    fName: "Daniel",
+    fName: "Daniel Eitan",
     lName: "Kalfa",
     ID: "318448032",
     city: "Jerusalem",
@@ -107,7 +107,7 @@ let persons = [
   {
     fName: "Yonatan",
     lName: "Cohen",
-    ID: "",
+    ID: "208642801",
     city: "Petach Tikva",
     birthDate: "18/04/1998",
     ParentID: ""
