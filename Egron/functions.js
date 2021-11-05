@@ -181,7 +181,10 @@ function addPersonNew(person) {
 
 function editPersonNew(event) {
   let tr = event.target.parentElement.parentElement;
-  let td = tr.firstElementChild;
+  let childs = tr.children;
+  for (let index = 0; index < childs.length; index++) {
+    childs[index].innerHTML = `<input type = "text" value = "${childs[index].textContent}"></input>`
+  }
 }
 
 initialTable()

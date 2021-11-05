@@ -9,7 +9,7 @@ header{
     top: 0px;
     width: 100%;
     z-index: 1;
-    color: white;
+    color: lightgray;
     text-align: center;
     background-color: black;
     margin: 0px;
@@ -46,7 +46,7 @@ li a:hover {
 
 a {
     text-decoration: none;
-    color: white;
+    color: lightgray;
 }
 
 table {
@@ -61,7 +61,7 @@ table {
 th{
     cursor: pointer;
     background-color: black;
-    color: white;
+    color: lightgray;
 }
 
 td, th {
@@ -111,7 +111,7 @@ p{
 
 footer{
     font-family: Poppins, sans-serif;
-    color: white;
+    color: lightgray;
     background-color: black;
     text-align: center;
     padding: 10px;
