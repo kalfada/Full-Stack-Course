@@ -19,24 +19,21 @@
         </a>
         <nav>
             <ul>
-                <li><a href="index.html">Show Egron</a></li>
-                <li><a href="addPerson.html">Add Person</a></li>
-                <li><a href="">Delete Person</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
     </header>
     <div id="search">
         <input type="search" placeholder="Search">
-        <!-- <i class="fas fa-search"></i> -->
+        <button class = "add-btn" onclick="addColumn()">Add Person</button>
     </div>
     <table>
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th onclick="sortByfName()">First Name</th>
+                <th onclick="sortBylName()">Last Name</th>
                 <th>ID</th>
-                <th>City</th>
+                <th onclick="sortByCity()">City</th>
                 <th>Birth Date</th>
                 <th>Parent ID</th>
                 <th>Edit</th>
