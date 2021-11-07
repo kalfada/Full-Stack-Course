@@ -155,12 +155,14 @@ let persons = [
     parentID: ""
   }
 ];
+let table = persons;
 
 function initialTable(table) {
   for (const person of table) {
     addPersonNew(person);
   }
 }
+
 
 function addPersonNew(person) {
   let tr = document.createElement('tr');
@@ -230,18 +232,18 @@ function deletePerson(event) {
 }
 ///////////////////////sorting table functions////////////////////////////////
 function sortByfName() {
-  persons.sort((a, b) => a.fName.toLowerCase() < b.fName.toLowerCase() ? -1 : a.fName.toLowerCase() > b.fName.toLowerCase() ? 1 : 0);
-  updateTable(persons);
+  table.sort((a, b) => a.fName.toLowerCase() < b.fName.toLowerCase() ? -1 : a.fName.toLowerCase() > b.fName.toLowerCase() ? 1 : 0);
+  updateTable(table);
 }
 
 function sortBylName() {
-  persons.sort((a, b) => a.lName.toLowerCase() < b.lName.toLowerCase() ? -1 : a.lName.toLowerCase() > b.lName.toLowerCase() ? 1 : 0);
-  updateTable(persons);
+  table.sort((a, b) => a.lName.toLowerCase() < b.lName.toLowerCase() ? -1 : a.lName.toLowerCase() > b.lName.toLowerCase() ? 1 : 0);
+  updateTable(table);
 }
 
 function sortByCity() {
-  persons.sort((a, b) => a.city.toLowerCase() < b.city.toLowerCase() ? -1 : a.city.toLowerCase() > b.city.toLowerCase() ? 1 : 0);
-  updateTable(persons);
+  table.sort((a, b) => a.city.toLowerCase() < b.city.toLowerCase() ? -1 : a.city.toLowerCase() > b.city.toLowerCase() ? 1 : 0);
+  updateTable(table);
 }
 
 function searchPerson(event) {
@@ -254,9 +256,10 @@ function searchPerson(event) {
           break;
       }
     }
+    table = newTable;
   }
-  updateTable(newTable);
+  updateTable(table);
 }
 
 
-initialTable(persons);
+initialTable(table);
