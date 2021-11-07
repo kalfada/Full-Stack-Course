@@ -1,0 +1,46 @@
+Object - Player:
+    name
+    type (x/O)
+    score
+    isMyTurn
+
+    getters and setters:
+    name
+    score
+    isMyTurn
+
+    just getters:
+    type
+
+functions:
+    //check after corrent turn if the current player as won
+    checkWin();
+    
+    //button that reset the game board for new game
+    newGame();
+
+    //undo the last move on the game and return the turn to previus player
+    //use array that contains all movements
+    undo();
+
+    //popup with number represent the game that ended with minimum movements 
+    showTopRecord();
+
+    //save the last game to the localStorage, include the current state, which player's turn is it,
+    //score and players names
+    saveGame();
+
+    //load the game that have been saved, if there is no saved game, show message
+    loadGame();
+
+    //check if cell is empty or not
+    isEmpty();
+
+    0,1,2
+    0,3,6
+    0,4,8
+    1,4,7
+    2,5,8
+    2,4,6
+    3,4,5
+    6,7,8

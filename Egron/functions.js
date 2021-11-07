@@ -186,6 +186,7 @@ function addPersonNew(person) {
 function editPersonNew(event) {
   let tr = event.target.parentElement.parentElement;
   let childs = tr.children;
+  console.log(childs);
   for (let index = 0; index < childs.length - 1; index++) {
     if (index != 2 || childs[index].innerText == '') {
       childs[index].setAttribute('contenteditable', 'true');

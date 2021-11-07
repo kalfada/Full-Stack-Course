@@ -1,0 +1,74 @@
+body {
+    background-color: lightgray;
+    margin: 150px 0px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    color: lightgray;
+    text-align: center;
+    background-color: black;
+    margin: 0px;
+    padding: 10px 0px;
+    box-shadow: 0px 2px 6px 0px black;
+    font-family: Poppins, sans-serif;
+}
+
+h1 {
+    display: inline;
+}
+
+ul {
+    padding: 0px;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    margin: 10px;
+    padding: 2px;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+li:hover {
+    color: black;
+    background-color: lightgray;
+}
+
+li a:hover {
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: lightgray;
+}
+
+table {
+    margin: 200px auto;
+    border-collapse: collapse;
+}
+
+td {
+
+    text-align: center;
+    border: 2px solid black;
+    padding: 30px;
+}
+
+.circle{
+    font-size: 40px;
+    background-color: lightcoral;
+}
+
+.xSign{
+    font-size: 40px;
+    background-color: lightblue;
+}
