@@ -1,8 +1,11 @@
 body {
     background-color: lightgray;
-    margin: 0px;
-    margin-top: 150px;
+    margin: 150px 0px;
 }
+
+::-webkit-scrollbar {
+    display: none;
+  }
 
 header {
     position: fixed;
@@ -93,6 +96,7 @@ input {
     display: block;
     margin: 20px auto;
     padding: 4px 0px;
+    font-family: Poppins, sans-serif;
 }
 
 .edit {
@@ -109,6 +113,10 @@ p {
 }
 
 footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    margin-bottom: 0px;
     font-family: Poppins, sans-serif;
     color: lightgray;
     background-color: black;
@@ -144,4 +152,9 @@ tbody input:focus {
 .add-btn:hover {
     background-color: black;
     color: lightgray;
+}
+
+h2{
+    text-align: center;
+    font-family: Poppins, sans-serif;
 }

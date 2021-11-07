@@ -1,6 +1,6 @@
 const tbody = document.querySelector('tbody');
 
-const keys = ['fName','lName', 'ID', 'city', 'birthDate', 'parentID'];
+const keys = ['fName', 'lName', 'ID', 'city', 'birthDate', 'parentID'];
 let persons = [
   {
     fName: "Daniel Eitan",
@@ -156,8 +156,8 @@ let persons = [
   }
 ];
 
-function initialTable() {
-  for (const person of persons) {
+function initialTable(table) {
+  for (const person of table) {
     addPersonNew(person);
   }
 }
@@ -209,9 +209,9 @@ function finishEditPerson(event) {
   childs[childs.length - 1].firstChild.onclick = (event) => editPersonNew(event);
 }
 
-function updateTable() {
+function updateTable(persons) {
   tbody.innerHTML = '';
-  initialTable();
+  initialTable(persons);
 }
 
 function addColumn() {
@@ -231,19 +231,32 @@ function deletePerson(event) {
 ///////////////////////sorting table functions////////////////////////////////
 function sortByfName() {
   persons.sort((a, b) => a.fName.toLowerCase() < b.fName.toLowerCase() ? -1 : a.fName.toLowerCase() > b.fName.toLowerCase() ? 1 : 0);
-  updateTable();
+  updateTable(persons);
 }
 
 function sortBylName() {
   persons.sort((a, b) => a.lName.toLowerCase() < b.lName.toLowerCase() ? -1 : a.lName.toLowerCase() > b.lName.toLowerCase() ? 1 : 0);
-  updateTable();
+  updateTable(persons);
 }
 
 function sortByCity() {
   persons.sort((a, b) => a.city.toLowerCase() < b.city.toLowerCase() ? -1 : a.city.toLowerCase() > b.city.toLowerCase() ? 1 : 0);
-  updateTable();
+  updateTable(persons);
+}
+
+function searchPerson(event) {
+  const str = document.querySelector('#searchPerson').value;
+  let newTable = [];
+  for (let index = 0; index < persons.length; index++) {
+    for (const key in persons[index]) {
+      if (persons[index][key].toLowerCase().includes(str.toLowerCase())) {
+          newTable.push(persons[index]);
+          break;
+      }
+    }
+  }
+  updateTable(newTable);
 }
 
 
-
-initialTable()
+initialTable(persons);
