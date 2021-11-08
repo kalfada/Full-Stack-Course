@@ -51,23 +51,19 @@ console.log(winPositions);
 function generateWinPositions(size) {
     let winPositions = []
     for (let row = 0; row < size; row++) {
-        let arr1 = [];
-        let arr2 = [];
+        let arr1 = [], arr2 = [];
         for (let col = 0; col < size; col++) {
             arr1.push([row, col]);
             arr2.push([col, row]);
         }
-        winPositions.push(arr1);
-        winPositions.push(arr2);
+        winPositions.push(arr1, arr2);
     }
-    let arr1 = [];
-    let arr2 = [];
+    let arr1 = [], arr2 = [];
     for (let x = gameArr.length - 1, y = 0; y < size; x--, y++) {
         arr1.push([y, y]);
         arr2.push([x, y]);
     }
-    winPositions.push(arr1);
-    winPositions.push(arr2);
+    winPositions.push(arr1, arr2);
     return winPositions;
 }
 
