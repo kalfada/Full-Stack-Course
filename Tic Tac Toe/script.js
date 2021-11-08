@@ -1,7 +1,6 @@
-function player(pName, score, isMyTurn, type) {
+function player(pName, score, type) {
     this.pName = pName;
     this.score = score;
-    this.isMyTurn = isMyTurn;
     this.type = type;
 
     this.getpName = function () {
@@ -9,9 +8,6 @@ function player(pName, score, isMyTurn, type) {
     }
     this.getScore = function () {
         return this.score;
-    }
-    this.getisMyTurn = function () {
-        return this.isMyTurn;
     }
     this.getType = function () {
         return this.type;
@@ -22,16 +18,21 @@ function player(pName, score, isMyTurn, type) {
     this.setScore = function (newScore) {
         this.score = newScore;
     }
-    this.setisMyTurn = function (newisMyTurn) {
-        this.isMyTurn = newisMyTurn;
-    }
     this.setType = function (newType) {
         this.type = newType;
     }
 }
-
 let circle = '<i class="far fa-circle"></i>';
 let xSign = '<i class="fas fa-times"></i>';
+
+let name1 = 'daniel';
+let name2 = 'Shira';
+
+let player1 = new player(name1, 0, circle);
+let player2 = new player(name2, 0, xSign);
+
+let withPlayerTurn = player1;
+
 
 // const tbody = document.querySelector('tbody');
 
@@ -41,17 +42,35 @@ let xSign = '<i class="fas fa-times"></i>';
 //2 = O
 let size = 3;
 let gameArr = generateGameArr(size);
-let combinations = [];
+let winPositions = generateWinPositions(size);
 
-for (let row = 0; row < gameArr.length; row++) {
-    combinations.push([]);
-    for (let col = 0; col < gameArr.length; col++) {
-        combinations[row].push([row,col]);
+let gameArr2 = [[1, 2, 2], [2, 1, 1], [1, 2, 1]];
+// updateTable(gameArr2)
+console.log(winPositions);
+
+function generateWinPositions(size) {
+    let winPositions = []
+    for (let row = 0; row < size; row++) {
+        let arr1 = [];
+        let arr2 = [];
+        for (let col = 0; col < size; col++) {
+            arr1.push([row, col]);
+            arr2.push([col, row]);
+        }
+        winPositions.push(arr1);
+        winPositions.push(arr2);
     }
+    let arr1 = [];
+    let arr2 = [];
+    for (let x = gameArr.length - 1, y = 0; y < size; x--, y++) {
+        arr1.push([y, y]);
+        arr2.push([x, y]);
+    }
+    winPositions.push(arr1);
+    winPositions.push(arr2);
+    return winPositions;
 }
 
-console.log(combinations);
-// updateTable(gameArr);
 
 function generateGameArr(size) {
     let gameArr = [];
@@ -64,7 +83,6 @@ function generateGameArr(size) {
     return gameArr;
 }
 
-let gameArr2 = [[0, 1, 2], [2, 1, 0], [1, 0, 2]];
 function updateTable(gameArr) {
     tbody.innerHTML = ''
     for (let row = 0; row < gameArr.length; row++) {
@@ -73,10 +91,10 @@ function updateTable(gameArr) {
             const td = document.createElement('td');
             if (gameArr[row][col] == 1) {
                 td.innerHTML = xSign;
-                td.className = "xSign"
+                td.className = "xSign";
             } else if (gameArr[row][col] == 2) {
                 td.innerHTML = circle;
-                td.className = "circle"
+                td.className = "circle";
             }
             tr.appendChild(td)
         }
@@ -89,7 +107,7 @@ function checkWin(gameArr) {
     for (let row = 0; row < array.length; row++) {
         for (let col = 0; col < array.length - 1; col++) {
             if (condition) {
-                
+
             }
         }
     }
