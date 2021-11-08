@@ -99,13 +99,5 @@ function updateTable(gameArr) {
 }
 
 function checkWin(gameArr) {
-    let res = false;
-    for (let row = 0; row < array.length; row++) {
-        for (let col = 0; col < array.length - 1; col++) {
-            if (condition) {
-
-            }
-        }
-    }
-    return res;
+    
 }
