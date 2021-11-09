@@ -25,16 +25,18 @@ function player(pName, score, type) {
 let circle = '<i class="far fa-circle"></i>';
 let xSign = '<i class="fas fa-times"></i>';
 
+let playerClassName = 'xSign'
+
 let name1 = 'daniel';
 let name2 = 'Shira';
 
 let player1 = new player(name1, 0, circle);
 let player2 = new player(name2, 0, xSign);
 
-let withPlayerTurn = player1;
+let whichPlayerTurn = player1;
 
 
-// const tbody = document.querySelector('tbody');
+const tbody = document.querySelector('tbody');
 
 //Guide for the gameArr:
 //0 = empty cell
@@ -44,9 +46,7 @@ let size = 3;
 let gameArr = generateGameArr(size);
 let winPositions = generateWinPositions(size);
 
-let gameArr2 = [[1, 2, 2], [2, 1, 1], [1, 2, 1]];
-// updateTable(gameArr2)
-console.log(winPositions);
+generateTable(gameArr)
 
 function generateWinPositions(size) {
     let winPositions = []
@@ -67,7 +67,6 @@ function generateWinPositions(size) {
     return winPositions;
 }
 
-
 function generateGameArr(size) {
     let gameArr = [];
     for (let row = 0; row < size; row++) {
@@ -79,18 +78,17 @@ function generateGameArr(size) {
     return gameArr;
 }
 
-function updateTable(gameArr) {
+function generateTable(gameArr) {
     tbody.innerHTML = ''
     for (let row = 0; row < gameArr.length; row++) {
         let tr = document.createElement('tr');
         for (let col = 0; col < gameArr.length; col++) {
             const td = document.createElement('td');
+            td.onclick = (event) => updateCell(event);
             if (gameArr[row][col] == 1) {
-                td.innerHTML = xSign;
-                td.className = "xSign";
+                td.className = 'xSign';
             } else if (gameArr[row][col] == 2) {
-                td.innerHTML = circle;
-                td.className = "circle";
+                td.className = 'circle';
             }
             tr.appendChild(td)
         }
@@ -98,6 +96,20 @@ function updateTable(gameArr) {
     }
 }
 
-function checkWin(gameArr) {
+function updateCell(event) {
+    let cell = event.target;
+    cell.onclick = '';
+    cell.className = playerClassName;
+    cell.innerHTML = whichPlayerTurn.type;
+    changePlayer();
+}
+
+function changePlayer() {
+    whichPlayerTurn = whichPlayerTurn === player1 ? player2 : player1;
+    playerClassName = playerClassName == 'xSign' ? 'circle' : 'xSign';
+}
+
+function checkWin(event) {
+    let cell = event.target;
     
 }

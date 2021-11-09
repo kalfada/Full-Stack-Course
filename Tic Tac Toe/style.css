@@ -57,18 +57,19 @@ table {
 }
 
 td {
-
+    width: 40px;
+    height: 40px;
     text-align: center;
     border: 2px solid black;
     padding: 30px;
 }
 
 .circle{
-    font-size: 40px;
+    font-size: 30px;
     background-color: lightcoral;
 }
 
 .xSign{
-    font-size: 40px;
+    font-size: 30px;
     background-color: lightblue;
 }
