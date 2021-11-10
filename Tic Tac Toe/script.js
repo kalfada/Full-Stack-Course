@@ -42,7 +42,7 @@ const tbody = document.querySelector('tbody');
 //0 = empty cell
 //1 = x
 //2 = O
-let size = 3;
+let size = 5;
 let gameArr = generateGameArr(size);
 let winPositions = generateWinPositions(size);
 
@@ -53,7 +53,7 @@ function generateWinPositions(size) {
     let winPositions = [];
     let arr = [];
     //Generate all row poisitions
-    for (let i = 0; i < size * 3; i += size) {
+    for (let i = 0; i < size * size; i += size) {
         for (let j = 0; j < size; j++) {
             arr.push(i + j);
         }
@@ -64,7 +64,7 @@ function generateWinPositions(size) {
     for (let index = 0; index < size; index++) {
         arr = [];
         let position = index
-        while (position < size * 3) {
+        while (position < size * size) {
             arr.push(position);
             position += size;
         }
@@ -72,7 +72,7 @@ function generateWinPositions(size) {
     }
     //Generate all slant poisitions
     let arr1 = [], arr2 = [];
-    for (let x = size - 1, y = 0; y < (size * 3); y += 4) {
+    for (let x = size - 1, y = 0; y < (size * size); y += size + 1) {
         arr1.push(y);
         arr2.push(x);
         x += 2;
@@ -83,7 +83,7 @@ function generateWinPositions(size) {
 
 function generateGameArr(size) {
     let gameArr = [];
-    for (let index = 0; index < size * 3; index++) {
+    for (let index = 0; index < size * size; index++) {
         gameArr.push(0);
     }
     return gameArr;
