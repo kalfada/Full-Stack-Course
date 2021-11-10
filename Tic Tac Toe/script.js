@@ -27,11 +27,11 @@ let xSign = '<i class="fas fa-times"></i>';
 
 let playerClassName = 'xSign'
 
-let name1 = 'daniel';
+let name1 = 'Daniel';
 let name2 = 'Shira';
 
-let player1 = new player(name1, 0, circle);
-let player2 = new player(name2, 0, xSign);
+let player1 = new player(name1, 0, xSign);
+let player2 = new player(name2, 0, circle);
 
 let whichPlayerTurn = player1;
 
@@ -46,22 +46,36 @@ let size = 3;
 let gameArr = generateGameArr(size);
 let winPositions = generateWinPositions(size);
 
+let gameArr2 = [0, 0, 1, 0, 2, 0, 2, 1, 1]
 generateTable(gameArr)
 
 function generateWinPositions(size) {
-    let winPositions = []
-    for (let row = 0; row < size; row++) {
-        let arr1 = [], arr2 = [];
-        for (let col = 0; col < size; col++) {
-            arr1.push([row, col]);
-            arr2.push([col, row]);
+    let winPositions = [];
+    let arr = [];
+    //Generate all row poisitions
+    for (let i = 0; i < size * 3; i += size) {
+        for (let j = 0; j < size; j++) {
+            arr.push(i + j);
         }
-        winPositions.push(arr1, arr2);
+        winPositions.push(arr);
+        arr = [];
     }
+    //Generate all column poisitions
+    for (let index = 0; index < size; index++) {
+        arr = [];
+        let position = index
+        while (position < size * 3) {
+            arr.push(position);
+            position += size;
+        }
+        winPositions.push(arr);
+    }
+    //Generate all slant poisitions
     let arr1 = [], arr2 = [];
-    for (let x = gameArr.length - 1, y = 0; y < size; x--, y++) {
-        arr1.push([y, y]);
-        arr2.push([x, y]);
+    for (let x = size - 1, y = 0; y < (size * 3); y += 4) {
+        arr1.push(y);
+        arr2.push(x);
+        x += 2;
     }
     winPositions.push(arr1, arr2);
     return winPositions;
@@ -69,27 +83,29 @@ function generateWinPositions(size) {
 
 function generateGameArr(size) {
     let gameArr = [];
-    for (let row = 0; row < size; row++) {
-        gameArr[row] = [];
-        for (let col = 0; col < size; col++) {
-            gameArr[row][col] = 0;
-        }
+    for (let index = 0; index < size * 3; index++) {
+        gameArr.push(0);
     }
     return gameArr;
 }
 
 function generateTable(gameArr) {
     tbody.innerHTML = ''
-    for (let row = 0; row < gameArr.length; row++) {
+    let cnt = 0;
+    for (let row = 0; row < size; row++) {
         let tr = document.createElement('tr');
-        for (let col = 0; col < gameArr.length; col++) {
+        for (let col = 0; col < size; col++) {
             const td = document.createElement('td');
             td.onclick = (event) => updateCell(event);
-            if (gameArr[row][col] == 1) {
+            td.setAttribute('id', `cell${cnt}`);
+            if (gameArr[cnt] == 1) {
                 td.className = 'xSign';
-            } else if (gameArr[row][col] == 2) {
+                td.innerHTML = xSign;
+            } else if (gameArr[cnt] == 2) {
                 td.className = 'circle';
+                td.innerHTML = circle;
             }
+            cnt++;
             tr.appendChild(td)
         }
         tbody.appendChild(tr);
@@ -101,6 +117,8 @@ function updateCell(event) {
     cell.onclick = '';
     cell.className = playerClassName;
     cell.innerHTML = whichPlayerTurn.type;
+    updateGameArr(IDtoIndex(cell));
+    checkWin(cell);
     changePlayer();
 }
 
@@ -109,7 +127,24 @@ function changePlayer() {
     playerClassName = playerClassName == 'xSign' ? 'circle' : 'xSign';
 }
 
-function checkWin(event) {
-    let cell = event.target;
-    
+function IDtoIndex(cell) {
+    return Number(cell.id.slice(4));
+}
+
+
+function updateGameArr(index) {
+    gameArr[index] = whichPlayerTurn.type == xSign ? 1 : 2;
+}
+
+function checkWin(cell) {
+    let possibilities = filterWinPositions(IDtoIndex(cell));
+    for (let i = 0; i < possibilities.length; i++) {
+        for (let j = 0; j < possibilities[i].length; j++) {
+            
+        }        
+    }
+}
+
+function filterWinPositions(cell) {
+    return winPositions.filter(element => element.includes(cell));
 }
