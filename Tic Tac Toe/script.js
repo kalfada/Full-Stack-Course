@@ -118,7 +118,7 @@ function updateCell(event) {
     cell.className = playerClassName;
     cell.innerHTML = whichPlayerTurn.type;
     updateGameArr(IDtoIndex(cell));
-    checkWin(cell);
+    console.log(checkWin(cell));
     changePlayer();
 }
 
@@ -131,20 +131,40 @@ function IDtoIndex(cell) {
     return Number(cell.id.slice(4));
 }
 
-
 function updateGameArr(index) {
     gameArr[index] = whichPlayerTurn.type == xSign ? 1 : 2;
 }
 
-function checkWin(cell) {
-    let possibilities = filterWinPositions(IDtoIndex(cell));
-    for (let i = 0; i < possibilities.length; i++) {
-        for (let j = 0; j < possibilities[i].length; j++) {
-            
-        }        
-    }
-}
-
 function filterWinPositions(cell) {
     return winPositions.filter(element => element.includes(cell));
+}
+
+function checkWin(cell) {
+    let possibilities = filterWinPositions(IDtoIndex(cell));
+    console.log(gameArr);
+    console.log(possibilities);
+    let isWin = true;
+    for (let i = 0; i < possibilities.length; i++) {
+        isWin = checkWinPosition(possibilities[i]);
+        if (isWin && gameArr[possibilities[i][0]] == 1) {
+            return 1;
+        } else if (isWin) {
+            return 2;
+        }
+    }
+    // return 0;
+}
+
+function checkWinPosition(winPosition) {
+    // console.log(winPosition);
+    let res = true;
+    // debugger
+    for (let index = 0; index < winPosition.length-1; index++) {
+        
+        if (gameArr[winPosition[index]] != gameArr[winPosition[index + 1]] || gameArr[winPosition[index]] == 0) {
+            res = false;
+        }
+    }
+    console.log(res);
+    return res;
 }
