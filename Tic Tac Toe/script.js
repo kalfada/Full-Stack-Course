@@ -152,13 +152,11 @@ function checkWin(cell) {
             return 2;
         }
     }
-    // return 0;
+    return 0;
 }
 
 function checkWinPosition(winPosition) {
-    // console.log(winPosition);
     let res = true;
-    // debugger
     for (let index = 0; index < winPosition.length-1; index++) {
         
         if (gameArr[winPosition[index]] != gameArr[winPosition[index + 1]] || gameArr[winPosition[index]] == 0) {
