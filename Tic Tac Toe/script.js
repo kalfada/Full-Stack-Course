@@ -141,8 +141,6 @@ function filterWinPositions(cell) {
 
 function checkWin(cell) {
     let possibilities = filterWinPositions(IDtoIndex(cell));
-    console.log(gameArr);
-    console.log(possibilities);
     let isWin = true;
     for (let i = 0; i < possibilities.length; i++) {
         isWin = checkWinPosition(possibilities[i]);
@@ -166,7 +164,7 @@ function checkWinPosition(winPosition) {
 function endGame() {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < array.length; j++) {
-            tbody.
+            // tbody.
         }
     }
 }
