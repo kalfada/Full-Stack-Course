@@ -33,7 +33,7 @@ let name2 = 'Shira';
 let player1 = new player(name1, 0, xSign);
 let player2 = new player(name2, 0, circle);
 
-let whichPlayerTurn = player1;
+let currentPlayer = player1;
 
 
 const tbody = document.querySelector('tbody');
@@ -42,7 +42,7 @@ const tbody = document.querySelector('tbody');
 //0 = empty cell
 //1 = x
 //2 = O
-let size = 5;
+let size = 3;
 let gameArr = generateGameArr(size);
 let winPositions = generateWinPositions(size);
 
@@ -90,7 +90,7 @@ function generateGameArr(size) {
 }
 
 function generateTable(gameArr) {
-    tbody.innerHTML = ''
+    tbody.innerHTML = '';
     let cnt = 0;
     for (let row = 0; row < size; row++) {
         let tr = document.createElement('tr');
@@ -106,7 +106,7 @@ function generateTable(gameArr) {
                 td.innerHTML = circle;
             }
             cnt++;
-            tr.appendChild(td)
+            tr.appendChild(td);
         }
         tbody.appendChild(tr);
     }
@@ -116,14 +116,14 @@ function updateCell(event) {
     let cell = event.target;
     cell.onclick = '';
     cell.className = playerClassName;
-    cell.innerHTML = whichPlayerTurn.type;
+    cell.innerHTML = currentPlayer.type;
     updateGameArr(IDtoIndex(cell));
     console.log(checkWin(cell));
     changePlayer();
 }
 
 function changePlayer() {
-    whichPlayerTurn = whichPlayerTurn === player1 ? player2 : player1;
+    currentPlayer = currentPlayer === player1 ? player2 : player1;
     playerClassName = playerClassName == 'xSign' ? 'circle' : 'xSign';
 }
 
@@ -132,7 +132,7 @@ function IDtoIndex(cell) {
 }
 
 function updateGameArr(index) {
-    gameArr[index] = whichPlayerTurn.type == xSign ? 1 : 2;
+    gameArr[index] = currentPlayer.type == xSign ? 1 : 2;
 }
 
 function filterWinPositions(cell) {
@@ -146,23 +146,27 @@ function checkWin(cell) {
     let isWin = true;
     for (let i = 0; i < possibilities.length; i++) {
         isWin = checkWinPosition(possibilities[i]);
-        if (isWin && gameArr[possibilities[i][0]] == 1) {
-            return 1;
-        } else if (isWin) {
-            return 2;
+        if (isWin) {
+            return currentPlayer;
         }
     }
-    return 0;
+    return -1;
 }
 
 function checkWinPosition(winPosition) {
     let res = true;
     for (let index = 0; index < winPosition.length-1; index++) {
-        
         if (gameArr[winPosition[index]] != gameArr[winPosition[index + 1]] || gameArr[winPosition[index]] == 0) {
             res = false;
         }
     }
-    console.log(res);
     return res;
+}
+
+function endGame() {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < array.length; j++) {
+            tbody.
+        }
+    }
 }
