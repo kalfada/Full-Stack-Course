@@ -52,7 +52,8 @@ a {
 }
 
 table {
-    margin: 200px auto;
+    margin: 100px auto;
+    margin-bottom: 50px;
     border-collapse: collapse;
 }
 
@@ -62,14 +63,58 @@ td {
     text-align: center;
     border: 2px solid black;
     padding: 30px;
+    transition: 0.2s;
 }
 
-.circle{
+.circle {
     font-size: 30px;
     background-color: lightcoral;
 }
 
-.xSign{
+.xSign {
     font-size: 30px;
     background-color: lightblue;
+}
+
+::placeholder {
+    font-family: Poppins, sans-serif;
+}
+
+input{
+    display: block;
+    margin: 20px auto;
+    border: 2px solid black;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+    background-color: lightgray;
+}
+
+label{
+    font-size: 15px;
+    font-family: Poppins, sans-serif;
+    text-align: center;
+}
+
+#buttons {
+    text-align: center;
+}
+
+button {
+    font-family: Poppins, sans-serif;
+    background-color: lightgray;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: black;
+    color: lightgray;
+}
+
+#size_menu{
+    width: 140px;
+    margin: auto;
+}
+select{
+    background-color: lightgray;
+    border: 2px solid black;
 }

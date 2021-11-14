@@ -22,32 +22,66 @@ function player(pName, score, type) {
         this.type = newType;
     }
 }
+
+let form = `<form action="">
+<input type="text" name="player1" placeholder="Player 1">
+<input type="text" name="player2" placeholder="Player 2">
+<div id="size_menu">
+    <label for="">choose size:</label>
+    <select name="size" id="">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+</div>
+<input type="submit" name="" value="Start Game">
+</form>`
+
 let circle = '<i class="far fa-circle"></i>';
 let xSign = '<i class="fas fa-times"></i>';
 
 let playerClassName = 'xSign'
 
-let name1 = 'Daniel';
-let name2 = 'Shira';
+let player1;
+let player2;
 
-let player1 = new player(name1, 0, xSign);
-let player2 = new player(name2, 0, circle);
+let currentPlayer;
 
-let currentPlayer = player1;
+let gameIsLive = false;
 
+let movements = [];
 
-const tbody = document.querySelector('tbody');
+const main = document.querySelector('#main');
+
+main.innerHTML = form;
 
 //Guide for the gameArr:
 //0 = empty cell
 //1 = x
 //2 = O
-let size = 3;
-let gameArr = generateGameArr(size);
-let winPositions = generateWinPositions(size);
+let size = 0;
+let gameArr = '';
+let winPositions = '';
 
-let gameArr2 = [0, 0, 1, 0, 2, 0, 2, 1, 1]
-generateTable(gameArr)
+document.querySelector('form').onsubmit = event => startGame(event);
+
+function startGame(event) {
+    event.preventDefault();
+    let values = Object.values(event.target);
+    size = Number(values.size.value);
+    gameArr = generateGameArr(size);
+    winPositions = generateWinPositions(size);
+    gameIsLive = true;
+    player1 = new player(event.target.children.player1.value, 0, xSign);
+    player2 = new player(event.target.children.player2.value, 0, circle);
+    currentPlayer = player1;
+    generateTable(size);
+}
 
 function generateWinPositions(size) {
     let winPositions = [];
@@ -72,7 +106,7 @@ function generateWinPositions(size) {
     }
     //Generate all slant poisitions
     let arr1 = [], arr2 = [];
-    for (let x = size - 1, y = 0; y < (size * size); y += size + 1) {
+    for (let x = size - 1, y = 0; y < size * size; y += size + 1) {
         arr1.push(y);
         arr2.push(x);
         x += 2;
@@ -89,9 +123,10 @@ function generateGameArr(size) {
     return gameArr;
 }
 
-function generateTable(gameArr) {
-    tbody.innerHTML = '';
+function generateTable() {
+    main.innerHTML = '';
     let cnt = 0;
+    let tbody = document.createElement('tbody');
     for (let row = 0; row < size; row++) {
         let tr = document.createElement('tr');
         for (let col = 0; col < size; col++) {
@@ -110,16 +145,22 @@ function generateTable(gameArr) {
         }
         tbody.appendChild(tr);
     }
+    let table = document.createElement('table');
+    table.appendChild(tbody);
+    main.appendChild(table);
 }
 
 function updateCell(event) {
-    let cell = event.target;
-    cell.onclick = '';
-    cell.className = playerClassName;
-    cell.innerHTML = currentPlayer.type;
-    updateGameArr(IDtoIndex(cell));
-    console.log(checkWin(cell));
-    changePlayer();
+    if (gameIsLive) {
+        let cell = event.target;
+        cell.onclick = '';
+        cell.className = playerClassName;
+        cell.innerHTML = currentPlayer.type;
+        movements.push(IDtoIndex(cell));
+        updateGameArr(IDtoIndex(cell));
+        checkWin(cell)
+        changePlayer();
+    }
 }
 
 function changePlayer() {
@@ -141,10 +182,9 @@ function filterWinPositions(cell) {
 
 function checkWin(cell) {
     let possibilities = filterWinPositions(IDtoIndex(cell));
-    let isWin = true;
     for (let i = 0; i < possibilities.length; i++) {
-        isWin = checkWinPosition(possibilities[i]);
-        if (isWin) {
+        if (checkWinPosition(possibilities[i])) {
+            gameIsLive = false;
             return currentPlayer;
         }
     }
@@ -153,7 +193,7 @@ function checkWin(cell) {
 
 function checkWinPosition(winPosition) {
     let res = true;
-    for (let index = 0; index < winPosition.length-1; index++) {
+    for (let index = 0; index < winPosition.length - 1; index++) {
         if (gameArr[winPosition[index]] != gameArr[winPosition[index + 1]] || gameArr[winPosition[index]] == 0) {
             res = false;
         }
@@ -161,10 +201,22 @@ function checkWinPosition(winPosition) {
     return res;
 }
 
-function endGame() {
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < array.length; j++) {
-            // tbody.
-        }
+function undo() {
+    if (gameIsLive) {
+        let cell = movements.pop();
+        gameArr[cell] = 0;
+        changePlayer();
+        let td = document.querySelector(`#cell${cell}`);
+        td.onclick = (event) => updateCell(event);
+        td.className = '';
+        td.innerHTML = ''
     }
+}
+
+document.querySelector('#undo').addEventListener('click', undo);
+document.querySelector('#new_game').addEventListener('click', newGame);
+
+function newGame() {
+    main.innerHTML = form;
+    document.querySelector('form').onsubmit = event => startGame(event);
 }
