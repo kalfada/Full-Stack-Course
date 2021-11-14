@@ -26,21 +26,22 @@ function player(pName, score, type) {
 let form = `<form action="">
 <input type="text" name="player1" placeholder="Player 1">
 <input type="text" name="player2" placeholder="Player 2">
-<div id="size_menu">
-    <label for="">choose size:</label>
-    <select name="size" id="">
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-</div>
+<label for="size">choose size:</label>
+<select name="size" id="">
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
 <input type="submit" name="" value="Start Game">
-</form>`
+</form>`;
+
+document.querySelector('#undo').addEventListener('click', undo);
+document.querySelector('#new_game').addEventListener('click', newGame);
 
 let circle = '<i class="far fa-circle"></i>';
 let xSign = '<i class="fas fa-times"></i>';
@@ -72,14 +73,18 @@ document.querySelector('form').onsubmit = event => startGame(event);
 
 function startGame(event) {
     event.preventDefault();
-    let values = Object.values(event.target);
-    size = Number(values.size.value);
+    size = Number(event.target.children.size.value);
     gameArr = generateGameArr(size);
     winPositions = generateWinPositions(size);
     gameIsLive = true;
     player1 = new player(event.target.children.player1.value, 0, xSign);
     player2 = new player(event.target.children.player2.value, 0, circle);
     currentPlayer = player1;
+    document.querySelector('#buttons').style.display = 'block';
+    document.querySelector('#players_details').style.display = 'block';
+    document.querySelector('#player_1').innerText = player1.pName;
+    document.querySelector('#player_2').innerText = player2.pName;
+
     generateTable(size);
 }
 
@@ -213,10 +218,10 @@ function undo() {
     }
 }
 
-document.querySelector('#undo').addEventListener('click', undo);
-document.querySelector('#new_game').addEventListener('click', newGame);
 
 function newGame() {
     main.innerHTML = form;
     document.querySelector('form').onsubmit = event => startGame(event);
+    document.querySelector('#buttons').style.display = 'block';
+    document.querySelector('#players_details').style.display = 'block';
 }

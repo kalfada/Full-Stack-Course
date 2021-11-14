@@ -1,6 +1,6 @@
 body {
     background-color: lightgray;
-    margin: 150px 0px;
+    margin: 100px 0px;
 }
 
 ::-webkit-scrollbar {
@@ -52,7 +52,7 @@ a {
 }
 
 table {
-    margin: 100px auto;
+    margin: 50px auto;
     margin-bottom: 50px;
     border-collapse: collapse;
 }
@@ -80,7 +80,7 @@ td {
     font-family: Poppins, sans-serif;
 }
 
-input{
+input {
     display: block;
     margin: 20px auto;
     border: 2px solid black;
@@ -89,7 +89,9 @@ input{
     background-color: lightgray;
 }
 
-label{
+label {
+    display: block;
+    margin: 12px;
     font-size: 15px;
     font-family: Poppins, sans-serif;
     text-align: center;
@@ -97,6 +99,7 @@ label{
 
 #buttons {
     text-align: center;
+    display: none;
 }
 
 button {
@@ -110,11 +113,35 @@ button:hover {
     color: lightgray;
 }
 
-#size_menu{
+#size_menu {
     width: 140px;
     margin: auto;
 }
-select{
+
+select {
+    display: block;
+    margin: auto;
     background-color: lightgray;
     border: 2px solid black;
+}
+
+
+
+#player_1 {
+    font-family: Poppins, sans-serif;
+    display: inline;
+    padding: 5px;
+    border: 2px solid black;
+    margin: 0px 100px;
+}
+
+#player_2 {
+    font-family: Poppins, sans-serif;
+    margin: 0px 100px;
+    padding: 5px;
+    border: 2px solid black;
+    float: right;
+}
+#players_details{
+    display: none;
 }
