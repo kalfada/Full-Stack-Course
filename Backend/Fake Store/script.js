@@ -1,11 +1,19 @@
 const axios = require('axios');
 
-async function getProducts(id) {
+async function getProducts() {
     const res = await axios.get(`https://fakestoreapi.com/products`);
+    
+    
     return res.data;
 }
 
-console.log(products);
+function creareProduct(product) {
+  const div = document.createElement('div');
+  div.id = product.id;
+
+}
+
+// console.log(products);
 let prod = {
     id: 14,
     title: 'Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) – Super Ultrawide Screen QLED ',
