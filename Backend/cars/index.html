@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Cars</h1>
+    <div class="flexbox">
+        <form>
+            <h2>Add Car</h2>
+            <input class="input-item" name="company" type="text" placeholder="Company">
+            <input class="input-item" name="model" type="text" placeholder="Model">
+
+            <label class="input-item" id='color'>
+                color
+                <input name="color" type="color">
+            </label>
+
+            <select class="input-item" name="year" id='year'></select>
+
+            <div class="input-item">
+                <label>
+                    <input name="gear" type="radio" value="Auto" required>
+                    Auto
+                </label>
+
+                <label>
+                    <input name="gear" type="radio" value="Menual" required>
+                    Menual
+                </label>
+            </div>
+
+            <label class="input-item">
+                <input type="checkbox" name="sunroof">
+                Sunroof
+            </label>
+
+
+            <input type="submit" value="Add">
+        </form>
+
+
+        <ul>
+            <h2>List</h2>
+
+            <div id='list'>
+            </div>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
