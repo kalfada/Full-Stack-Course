@@ -6,6 +6,10 @@ app.use(express.json())
 
 let cars = [];
 
+app.get('/', function(req, res){
+    res.send('hello')
+})
+
 app.post('/cars/add', function(req, res){
     const {company, model, color, year, gear, sunroof} = req.body
     cars.push({company, model, color, year, gear, sunroof});
