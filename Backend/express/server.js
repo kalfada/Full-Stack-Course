@@ -9,10 +9,11 @@ app.get('/', function (req, res) {
     res.send('hello world')
 })
 
-app.get('/calc', function (req, res) {
-    let action = req.query.operator;
-    let num1 = req.query.num1
-    let num2 = req.query.num2
+app.get('/calc/:action', function (req, res) {
+    const
+        { params, query } = req,
+        { num1, num2 } = query,
+        { action } = params
 
     switch (action) {
         case 'sum':

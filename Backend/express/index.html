@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="http://localhost:3000/calc">
+    <form action="http://localhost:3000/calc/sum">
         <input type="number" name="num1" placeholder="num 1">
         <input type="number" name="num2" placeholder="num 2">
-        <label for="">action: </label><select name="operator" id="">
+        <label for="">action: </label><select>
             <option value="sum">+</option>
             <option value="sub">-</option>
             <option value="mul">*</option>
@@ -21,5 +21,9 @@
     </form>
 
 
+    <script>
+        document.querySelector('select').oninput =
+            e => document.querySelector('form').action = `http://localhost:3000/calc/${e.target.value}`
+    </script>
 </body>
 </html>
