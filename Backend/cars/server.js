@@ -10,6 +10,10 @@ app.get('/', function(req, res){
     res.send('hello')
 })
 
+app.get('/cars', function(req, res){
+    res.send(cars)
+})
+
 app.post('/cars/add', function(req, res){
     const {company, model, color, year, gear, sunroof} = req.body
     cars.push({company, model, color, year, gear, sunroof});
@@ -20,5 +24,10 @@ app.post('/cars/get', function(req, res){
     res.send(cars);
 })
 
+app.delete('/cars/delete', function(req, res){
+    
+})
 
-app.listen(3000, () => console.log('server is on'))
+
+
+app.listen(3000, () => console.log('server is running'))
