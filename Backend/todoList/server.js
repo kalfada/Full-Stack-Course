@@ -31,7 +31,7 @@ app.get('/list', function (req, res) {
 })
 
 app.get('/', function (req, res) {
-    res.send('hello')    
+    res.send('hello')
 })
 
 app.post('/list', function (req, res) {
@@ -42,4 +42,10 @@ app.post('/list', function (req, res) {
     saveStorage()
     res.send('success')
 })
-app.listen(3000, 'server is running')
+app.listen(3000, () => console.log('server is running'))
+
+
+
+
+
+
