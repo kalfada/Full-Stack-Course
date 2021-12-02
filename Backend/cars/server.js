@@ -18,6 +18,14 @@ function saveStorage() {
     });
 }
 
+function updateFromStorage() {
+    fs.readFile('cars.json', function (err, data) {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(data);
+        return res.end();
+    });
+}
+
 //Add new car to the server array
 app.post('/cars', function (req, res) {
     const { body } = req;
