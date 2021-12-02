@@ -1,5 +1,7 @@
 const express = require('express')
 
+const fs = require('fs');
+
 const app = express()
 
 app.use(express.json())
@@ -9,11 +11,19 @@ app.use(express.static('public'))
 
 let cars = [];
 let cnt = 1;
+function saveStorage() {
+    fs.writeFile('cars.json', JSON.stringify(cars), function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+    });
+}
 
+//Add new car to the server array
 app.post('/cars', function (req, res) {
     const { body } = req;
     body.id = cnt++;
     cars.push(body);
+    saveStorage();
     res.send('success');
 })
 

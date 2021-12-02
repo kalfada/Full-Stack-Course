@@ -1,7 +1,22 @@
-document.querySelector('#year').innerHTML = getYears()
+document.querySelector('#year').innerHTML = getYears();
+let cars = [];
+getCarsList();
 
-const cars = JSON.parse(localStorage.cars || null) || []
-render()
+function getCarsList() {
+    axios.get('http://localhost:3000/cars')
+        .then(res => {
+            cars = res.data;
+            render()
+        })
+}
+
+function deleteCar(event) {
+    const car = event.target.parentElement;
+    if (confirm('Are you sure ou want to delete?')) {
+        axios.delete(`/cars/${car.id}`)
+        .then(getCarsList());
+    }
+}
 
 function getYears() {
     let years = ''
@@ -20,15 +35,16 @@ document.querySelector('form').onsubmit = event => {
         }), {}
         )
     form.reset()
-    cars.push(values)
+    axios.post('/cars', values)
+        .then(() => getCarsList())
     localStorage.cars = JSON.stringify(cars)
-    render()
 }
 
 function render() {
     document.querySelector('#list').innerHTML =
-        cars.map(car => `<li>
+        cars.map(car => `<li id = "${car.id}">
     <strong>${car.company} - ${car.model}</strong>
+    <button onclick = "deleteCar(event)">X</button>
     <div class="details">
         <div>
             <span>${car.gear}</span>
