@@ -8,39 +8,54 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(express.static('public'))
 
-let list = [];
 let idCnt = 1;
 
-function saveStorage() {
+function saveJson(list) {
     fs.writeFile('todoList.json', JSON.stringify(list), function (err) {
         if (err) throw err;
         console.log('Saved!');
     });
 }
 
-function updateFromStorage() {
-    fs.readFile('todoList.json', function (err, data) {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.write(data);
-        return res.end();
-    });
+function getListFromJson() {
+    return JSON.parse(fs.readFileSync('todoList.json', function (err, data) {
+
+    }))
 }
 
-app.get('/list', function (req, res) {
-    res.send(list)
+app.get('/list/:id?', function (req, res) {
+    const { id } = req.params;
+    if (id) {
+        const mission = getListFromJson().find(mission => mission.id == id);
+        mission ? res.send(mission) : res.send(`mission with id ${id} doesn't exist`);
+    } else {
+        res.send(getListFromJson())
+    }
 })
 
-app.get('/', function (req, res) {
-    res.send('hello')
-})
 
 app.post('/list', function (req, res) {
     const { body } = req
-    body.id = idCnt++
-    body.done = false
-    list.push(body);
-    saveStorage()
-    res.send('success')
+    if (body.text != '') {
+        let list = getListFromJson()
+        body.id = list[list.length - 1].id + 1
+        body.done = false
+        list.push(body);
+        saveJson(list)
+        res.send('success')
+    } else {
+        res.send('invalid request')
+    }
+})
+
+app.delete('/list/:id', function (req, res) {
+    const { id } = req.params
+    let list = getListFromJson()
+    const index = list.findIndex(mission => mission.id == id)
+    index == -1 ? res.send(`not found`) :
+        list.splice(index, 1)
+    saveJson(list);
+    res.send(`id ${id} deleted successfuly`)
 })
 app.listen(3000, () => console.log('server is running'))
 
