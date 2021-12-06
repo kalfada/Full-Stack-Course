@@ -46,19 +46,30 @@ app.post('/list', function (req, res) {
     }
 })
 
-app.delete('/list/:id', function (req, res) {
+app.put('/done/:id', function (req, res) {
     const { id } = req.params
     let list = getListFromJson()
-    const index = list.findIndex(mission => mission.id == id)
-    index == -1 ? res.send(`not found`) :
-        list.splice(index, 1)
-    saveJson(list);
-    res.send(`id ${id} deleted successfuly`)
+    const index = list.findIndex(mission => mission.id == id);
+    if (index != -1) {
+        list[index].done = !list[index].done
+        saveJson(list);
+        res.send('changed successfully');
+    } else {
+        res.send(`mission with id ${id} doesn't exist`);
+    }
+})
+
+app.delete('/list/:id', function (req, res) {
+    const { id } = req.params
+    if (id) {
+        let list = getListFromJson()
+        const index = list.findIndex(mission => mission.id == id)
+        index == -1 ? res.send(`not found`) :
+            list.splice(index, 1)
+        saveJson(list);
+        res.send(`id ${id} deleted successfuly`)
+    }else{
+        res.send(`mission with id ${id} doesn't exist`);
+    }
 })
 app.listen(3000, () => console.log('server is running'))
-
-
-
-
-
-
