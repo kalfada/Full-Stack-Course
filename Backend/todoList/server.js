@@ -36,7 +36,11 @@ app.post('/list', function (req, res) {
     const { body } = req
     if (body.text != '') {
         let list = getListFromJson()
-        body.id = list[list.length - 1].id + 1
+        if (list.length != 0) {
+            body.id = list[list.length - 1].id + 1
+        } else {
+            body.id = 1
+        }
         body.done = false
         list.push(body);
         saveJson(list)
@@ -68,7 +72,7 @@ app.delete('/list/:id', function (req, res) {
             list.splice(index, 1)
         saveJson(list);
         res.send(`id ${id} deleted successfuly`)
-    }else{
+    } else {
         res.send(`mission with id ${id} doesn't exist`);
     }
 })
