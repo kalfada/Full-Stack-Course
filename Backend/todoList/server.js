@@ -8,8 +8,6 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(express.static('public'))
 
-let idCnt = 1;
-
 function saveJson(list) {
     fs.writeFile('todoList.json', JSON.stringify(list), function (err) {
         if (err) throw err;
