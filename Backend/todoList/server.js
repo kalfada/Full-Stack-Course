@@ -9,15 +9,14 @@ app.use(express.urlencoded())
 app.use(express.static('public'))
 
 function saveJson(list) {
-    fs.writeFile('todoList.json', JSON.stringify(list), function (err) {
+    fs.writeFile('todoList.json', JSON.stringify(list, null, '\t'), function (err) {
         if (err) throw err;
-        console.log('Saved!');
     });
 }
 
 function getListFromJson() {
     return JSON.parse(fs.readFileSync('todoList.json', function (err, data) {
-
+        if (err) throw err;
     }))
 }
 
@@ -34,9 +33,9 @@ app.get('/list/:id?', function (req, res) {
 
 app.post('/list', function (req, res) {
     const { body } = req
-    if (body.text != '') {
+    if (body.text) {
         let list = getListFromJson()
-        if (list.length != 0) {
+        if (list.length != 0 || Object.entries(list).length) {
             body.id = list[list.length - 1].id + 1
         } else {
             body.id = 1
@@ -50,7 +49,7 @@ app.post('/list', function (req, res) {
     }
 })
 
-app.put('/done/:id', function (req, res) {
+app.put('/list/:id', function (req, res) {
     const { id } = req.params
     let list = getListFromJson()
     const index = list.findIndex(mission => mission.id == id);
@@ -76,4 +75,5 @@ app.delete('/list/:id', function (req, res) {
         res.send(`mission with id ${id} doesn't exist`);
     }
 })
+
 app.listen(3000, () => console.log('server is running'))
