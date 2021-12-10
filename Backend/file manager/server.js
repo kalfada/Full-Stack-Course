@@ -6,6 +6,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(express.static('public'))
 
 app.get('/root*/', function (req, res) {
     const { path } = req;
