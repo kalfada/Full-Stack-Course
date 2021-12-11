@@ -13,11 +13,21 @@ h1 {
 .singel_file {
     color: black;
     text-decoration: none;
-    padding-left: 50px;
     display: block;
 }
 
 .singel_file:hover {
     color: navy;
     cursor: pointer;
+}
+
+#files {
+    display: flex;
+}
+
+.path{
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+    padding-bottom: 40px;
 }
