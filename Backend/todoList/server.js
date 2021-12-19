@@ -20,7 +20,7 @@ function getListFromJson() {
     }))
 }
 
-app.get('/list/:id?', function (req, res) {
+app.get('/:id?', function (req, res) {
     const { id } = req.params;
     if (id) {
         const mission = getListFromJson().find(mission => mission.id == id);
@@ -31,11 +31,11 @@ app.get('/list/:id?', function (req, res) {
 })
 
 
-app.post('/list', function (req, res) {
+app.post('/', function (req, res) {
     const { body } = req
     if (body.text) {
         let list = getListFromJson()
-        if (list.length != 0 || Object.entries(list).length) {
+        if (list.length != 0) {
             body.id = list[list.length - 1].id + 1
         } else {
             body.id = 1
@@ -49,7 +49,7 @@ app.post('/list', function (req, res) {
     }
 })
 
-app.put('/list/:id', function (req, res) {
+app.put('/:id', function (req, res) {
     const { id } = req.params
     let list = getListFromJson()
     const index = list.findIndex(mission => mission.id == id);
