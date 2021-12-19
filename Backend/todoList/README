@@ -1,0 +1,12 @@
+This is a mini project of todo list
+with client side and server side
+which have the abilities to:
+    1.add new mission
+    2.delete mission
+    3.toggle a mission to mark as done or not
+to run this project you need to run the following commands:
+    1. npm i
+    2. npm start
+    3. go at chrome to http://localhost:3000
+
+ENJOY! 
