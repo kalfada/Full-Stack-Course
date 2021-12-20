@@ -20,7 +20,7 @@ function getListFromJson() {
     }))
 }
 
-app.get('/:id?', function (req, res) {
+app.get('/list/:id?', function (req, res) {
     const { id } = req.params;
     if (id) {
         const mission = getListFromJson().find(mission => mission.id == id);
@@ -62,7 +62,7 @@ app.put('/:id', function (req, res) {
     }
 })
 
-app.delete('/list/:id', function (req, res) {
+app.delete('/:id', function (req, res) {
     const { id } = req.params
     if (id) {
         let list = getListFromJson()
