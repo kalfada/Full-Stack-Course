@@ -1,30 +1,30 @@
-const Tasks = require('./tasks')
+const Tasks = require('./tasks_mongo')
 
 module.exports = app => {
 
-    app.get('/todo', (req, res) => {
-        res.send(Tasks.read())
+    app.get('/todo', async (req, res) => {
+        res.send(await Tasks.read(req.query))
     })
 
-    app.post('/todo', (req, res) => {
+    app.post('/todo', async (req, res) => {
         try {
-            res.send(Tasks.create(req.body))
+            res.send(await Tasks.create(req.body))
         } catch (error) {
             res.send({ code: 400, message: error.message || error })
         }
     })
 
-    app.put('/todo/:id', (req, res) => {
+    app.put('/todo/:id', async (req, res) => {
         try {
-            res.send(Tasks.update(req.params.id))
+            res.send(await Tasks.update(req.params.id))
         } catch (error) {
             res.send({ code: 400, message: error.message || error })
         }
     })
 
-    app.delete('/todo/:id', (req, res) => {
+    app.delete('/todo/:id', async (req, res) => {
         try {
-            res.send(Tasks.delete(req.params.id))
+            res.send(await Tasks.delete(req.params.id))
         } catch (error) {
             res.send({ code: 400, message: error.message || error })
         }

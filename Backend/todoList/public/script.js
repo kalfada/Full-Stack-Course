@@ -38,10 +38,12 @@ function render() {
             let list = res.data
             let listElement = ''
             if (list.length) {
+                listElement +='<ul>'
                 for (const item of list) {
                     const doneClass = item.done ? 'done' : ''
                     listElement += `<li class = "${doneClass}"><label class = "check" onclick = "toggleItem(${item.id})"></label><span>${item.text}</span><button onclick = "deleteItem(${item.id})">X</i></button></li>`
                 }
+                listElement += '</ul>'
             }else{
                 listElement = '<i class="fas fa-clipboard-list clipboard"></i><h2>Add your first todo</h2><p>What do you want to get done today?</p>'
             }
