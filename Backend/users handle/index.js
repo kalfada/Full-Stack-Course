@@ -14,10 +14,8 @@ function update(id, updatedUser) {
     return userModel.findByIdAndUpdate(id, updatedUser, { new: true })
 }
 
-async function login(mail, pass) {
-    const user = await read({ email: mail })
-    return !user.length ? 'email is wrong' :
-    user[0].pass == pass ? 'connected' : 'wrong password'    
+async function login(email, pass) {
+    return await read({ email: email, pass: pass })
 }
 
 

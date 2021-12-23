@@ -21,9 +21,9 @@ module.exports = app =>{
             res.send({ code: 400, message: error.message || error })
         }
     });
-    app.post('/users/:email/:pass', async (req, res) =>{
+    app.post('/users/login', async (req, res) =>{
         try {
-            res.send(await users.login(req.params.email, req.params.pass))
+            res.send(await users.login(req.body.email, req.body.pass))
         } catch (err) {
             res.send({ code: 400, message: error.message || error })
         }
