@@ -21,4 +21,11 @@ module.exports = app =>{
             res.send({ code: 400, message: error.message || error })
         }
     });
+    app.post('/users/:email/:pass', async (req, res) =>{
+        try {
+            res.send(await users.login(req.params.email, req.params.pass))
+        } catch (err) {
+            res.send({ code: 400, message: error.message || error })
+        }
+    })
 }
