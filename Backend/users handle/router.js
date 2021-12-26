@@ -10,7 +10,7 @@ module.exports = app =>{
         try{
             res.send(await users.create(req.body))
         }catch (err){
-            res.send({ code: 400, message: error.message || error })
+            res.send({ code: 400, message: err.message || err })
         }
     });
     
@@ -18,14 +18,22 @@ module.exports = app =>{
         try{
             res.send(await users.update(req.params.id, req.body))
         } catch(err){
-            res.send({ code: 400, message: error.message || error })
+            res.send({ code: 400, message: err.message || err })
         }
     });
     app.post('/users/login', async (req, res) =>{
         try {
             res.send(await users.login(req.body.email, req.body.pass))
         } catch (err) {
-            res.send({ code: 400, message: error.message || error })
+            res.send({ code: 400, message: err.message || err })
+        }
+    })
+
+    app.post('/users/register', async (req, res) =>{
+        try {
+            res.send(await users.register(req.body))
+        } catch (err) {
+            res.send({ code: 400, message: err.message || err })
         }
     })
 }
