@@ -35,6 +35,7 @@ async function register(newUser) {
     newUser.lastSeen = Date.now()
 
     const u = await create(newUser)
+    console.log('hey');
     return await read({ _id: u.id })
 }
 

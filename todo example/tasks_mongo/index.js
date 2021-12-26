@@ -13,11 +13,11 @@ function create(newTask) {
 }
 
 async function update(id) {
-    const t = await read({ _id: id })
-    return taskModel.findByIdAndUpdate(id, { done: !t[0].done }, { new: true })
+    const t = await read({ id: id })
+    return taskModel.findOneAndUpdate({ id: id }, { done: !t[0].done }, { new: true })
 }
 
 function del(id) {
-    return taskModel.findByIdAndDelete(id)
+    return taskModel.findOneAndDelete({ id: id })
 }
 module.exports = { create, read, update, delete: del }

@@ -5,6 +5,8 @@ const
     router = require('./router')
 
 app.use(express.json())
+app.use(express.static('public'))
+app.use(express.urlencoded())
 
 router(app)
 
