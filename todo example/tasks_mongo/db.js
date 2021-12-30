@@ -9,4 +9,4 @@ mongoose.connect(connectionString)
     })
     .catch(()=>{
         throw 'mongo not connected'
-    })
+    })  
